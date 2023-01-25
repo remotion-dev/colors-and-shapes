@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@remotion/cli": "3.3.37",
+    "@remotion/noise": "^3.3.37",
     "@remotion/shapes": "^3.3.37",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
