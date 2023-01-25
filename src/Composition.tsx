@@ -1,3 +1,12 @@
+import {AbsoluteFill, Sequence} from 'remotion';
+import {Green} from './Green';
+
 export const MyComposition = () => {
-	return null;
+	return (
+		<Sequence>
+			<AbsoluteFill>
+				<Green />
+			</AbsoluteFill>
+		</Sequence>
+	);
 };
