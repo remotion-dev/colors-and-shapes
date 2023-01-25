@@ -1,4 +1,3 @@
-import {noise2D} from '@remotion/noise';
 import {Rect} from '@remotion/shapes';
 import React from 'react';
 import {
@@ -56,9 +55,7 @@ export const Green: React.FC = () => {
 				{new Array(rows).fill(true).map((_, i) => {
 					return (
 						<div style={row}>
-							{new Array(columns).fill(true).map((_, j) => {
-								const spr = 1;
-
+							{new Array(columns).fill(true).map(() => {
 								const weightFactor = weights[i] / totalWeight;
 								const factor = interpolate(
 									spr1,
