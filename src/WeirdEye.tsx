@@ -9,7 +9,7 @@ export const WeirdEye: React.FC<{
 	return (
 		<>
 			{new Array(1).fill(true).map((r, i) => {
-				const ry = interpolate(Math.sin(frame / 10), [-1, 1], [0.1, 0.9]);
+				const ry = interpolate(Math.sin(frame / 10), [-1, 1], [0.1, 0.75]);
 				return (
 					<Ellipse
 						rx={(width / 2) * 0.6}

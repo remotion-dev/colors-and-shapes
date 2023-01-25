@@ -1,12 +1,16 @@
-import {Circle, Ellipse, Rect, Triangle} from '@remotion/shapes';
+import {Circle, Ellipse, Rect, Star, Triangle} from '@remotion/shapes';
 import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {BlueLetter} from './BlueLetter';
+import {IncreasingStar} from './IncreasingStar';
 import {WeirdEye} from './WeirdEye';
 
 const row: React.CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
 };
+
+const grid = 4;
 
 export const Blue: React.FC = () => {
 	const {width, height} = useVideoConfig();
@@ -31,17 +35,17 @@ export const Blue: React.FC = () => {
 					strokeWidth={20}
 					stroke="#20e8c2"
 				/>
-				{new Array(3).fill(true).map((r, i) => {
+				{new Array(grid).fill(true).map((r, i) => {
 					return (
 						<div style={row}>
-							{new Array(3).fill(true).map((c, j) => {
-								const index = i * 3 + j;
+							{new Array(grid).fill(true).map((c, j) => {
+								const index = i * grid + j;
 								return (
 									<div
 										style={{
 											position: 'relative',
-											width: width / 3,
-											height: height / 3,
+											width: width / grid,
+											height: height / grid,
 											justifyContent: 'center',
 											alignItems: 'center',
 											display: 'flex',
@@ -51,8 +55,8 @@ export const Blue: React.FC = () => {
 											fill="transparent"
 											stroke="#20e8c2"
 											strokeWidth={20}
-											width={width / 3}
-											height={height / 3}
+											width={width / grid}
+											height={height / grid}
 											style={{
 												position: 'absolute',
 											}}
@@ -63,22 +67,31 @@ export const Blue: React.FC = () => {
 													position: 'absolute',
 													scale: '0.7',
 												}}
-												length={width / 3 - 20}
+												length={width / grid - 20}
 												direction="up"
 												fill="#20e8c2"
 											/>
 										) : null}
-										{index === 5 ? (
+										{index === 5 || index === 10 ? (
 											<Rect
 												fill="#20e8c2"
-												width={width / 3}
-												height={height / 3}
+												width={width / grid}
+												height={height / grid}
 												style={{
 													position: 'absolute',
 												}}
 											/>
 										) : null}
-										{index === 5 ? <WeirdEye width={width / 3} /> : null}
+										{index === 5 ? <WeirdEye width={width / grid} /> : null}
+										{index === 10 ? (
+											<IncreasingStar width={width / grid} />
+										) : null}
+										{index === 0 ? <BlueLetter>S</BlueLetter> : null}
+										{index === 3 ? <BlueLetter>H</BlueLetter> : null}
+										{index === 4 ? <BlueLetter>A</BlueLetter> : null}
+										{index === 9 ? <BlueLetter>P</BlueLetter> : null}
+										{index === 11 ? <BlueLetter>E</BlueLetter> : null}
+										{index === 14 ? <BlueLetter>S</BlueLetter> : null}
 									</div>
 								);
 							})}
