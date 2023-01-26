@@ -1,4 +1,4 @@
-import {Circle, Ellipse, Rect, Star, Triangle} from '@remotion/shapes';
+import {Rect, Triangle} from '@remotion/shapes';
 import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {BlueLetter} from './BlueLetter';
