@@ -12,13 +12,21 @@ export const Camera: React.FC<{
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
-	const spr = spring({
-		fps,
-		frame: frame - 20,
-		config: {
-			damping: 200,
-		},
-	});
+	const spr =
+		spring({
+			fps,
+			frame: frame - 20,
+			config: {
+				damping: 200,
+			},
+		}) -
+		spring({
+			fps,
+			frame: frame - 50,
+			config: {
+				damping: 200,
+			},
+		});
 
 	const edgeRoundness = interpolate(
 		spr,
