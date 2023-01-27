@@ -29,6 +29,20 @@ export const RemotionRoot: React.FC = () => {
 				fps={30}
 				width={1080}
 				height={1080}
+				defaultProps={{
+					trace: false,
+				}}
+			/>
+			<Composition
+				id="CameraTrace"
+				component={Camera}
+				durationInFrames={400}
+				fps={30}
+				width={1080}
+				height={1080}
+				defaultProps={{
+					trace: true,
+				}}
 			/>
 		</>
 	);

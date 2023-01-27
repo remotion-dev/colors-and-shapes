@@ -1,11 +1,14 @@
 import {interpolate, interpolateColors} from 'remotion';
 import {useCurrentFrame} from 'remotion';
 import {useVideoConfig} from 'remotion';
-import {Circle, Rect} from '@remotion/shapes';
+import {Circle} from '@remotion/shapes';
 import React from 'react';
 import {AbsoluteFill, spring} from 'remotion';
+import {Rect} from './inline-debug/rect';
 
-export const Camera: React.FC = () => {
+export const Camera: React.FC<{
+	trace: boolean;
+}> = ({trace}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -30,7 +33,9 @@ export const Camera: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundImage: `radial-gradient(${color}, #000)`,
+				backgroundImage: trace
+					? 'linear-gradient(#eee, #eee)'
+					: `radial-gradient(${color}, #000)`,
 				scale: String(totalScale),
 			}}
 		>
@@ -45,19 +50,21 @@ export const Camera: React.FC = () => {
 						position: 'absolute',
 					}}
 					fill="transparent"
-					stroke="white"
+					stroke={trace ? 'rgba(0, 0, 0, 0.1)' : 'white'}
 					radius={85}
 					strokeWidth={10}
 				/>
 				<Rect
+					debug={trace}
 					style={{
-						scale: String(scale),
 						position: 'absolute',
 					}}
-					fill="#ff4700"
+					fill={trace ? 'rgba(0, 0, 0, 0.1)' : '#ff4700'}
+					stroke={trace ? '#666' : 'transparent'}
+					strokeWidth={trace ? 2 : 0}
 					edgeRoundness={edgeRoundness}
-					width={150}
-					height={150}
+					width={150 * scale}
+					height={150 * scale}
 				/>
 			</AbsoluteFill>
 		</AbsoluteFill>
