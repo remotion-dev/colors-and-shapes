@@ -1,24 +1,26 @@
 import {Pie} from '@remotion/shapes';
 import React from 'react';
-import {
-	AbsoluteFill,
-	interpolate,
-	interpolateColors,
-	useCurrentFrame,
-} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 
 const MultiArc: React.FC<{
 	counterClockwise: boolean;
-	progress: (i: number) => number;
+	progress: number;
 	iters: number;
 	strokeWidth: number;
 	center: number;
-}> = ({counterClockwise, progress, iters, strokeWidth, center}) => {
+	extraRotation: number;
+}> = ({
+	counterClockwise,
+	progress,
+	iters,
+	strokeWidth,
+	center,
+	extraRotation,
+}) => {
 	return (
 		<>
 			{new Array(iters).fill(0).map((_, i) => {
-				const fromOuter = counterClockwise ? i : iters - i - 1;
-				if (progress(i) <= 0) {
+				if (progress <= 0) {
 					return null;
 				}
 				return (
@@ -30,17 +32,14 @@ const MultiArc: React.FC<{
 					>
 						<Pie
 							counterClockwise={counterClockwise}
+							stroke="#EF539E"
 							strokeWidth={strokeWidth}
-							stroke={interpolateColors(
-								fromOuter,
-								[0, iters - 1],
-								['#fff', '#EF539E']
-							)}
 							fill="none"
 							closePath={false}
 							radius={center + i * strokeWidth * 2}
-							progress={progress(i)}
+							progress={progress}
 							strokeLinecap="round"
+							rotation={extraRotation}
 						/>
 					</AbsoluteFill>
 				);
@@ -49,7 +48,7 @@ const MultiArc: React.FC<{
 	);
 };
 
-const numberOfMultiArcs = 4;
+const numberOfMultiArcs = 2;
 
 export const Arcs: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -57,54 +56,54 @@ export const Arcs: React.FC = () => {
 	const center = interpolate(frame, [0, 200], [100, 200], {
 		extrapolateRight: 'clamp',
 	});
-	const strokeWidth = interpolate(frame, [0, 200], [20, 40], {
+	const strokeWidth = interpolate(frame, [0, 200], [20, 20], {
 		extrapolateRight: 'clamp',
 	});
-	const iters = 10;
+	const iters = 4;
 	const radius = center * 2 + strokeWidth * 2 * (iters - 1);
 
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: '#00AEEF',
+				backgroundColor: '#EF539E',
 			}}
 		>
-			{new Array(numberOfMultiArcs).fill(0).map((_, i) => {
-				const offset = interpolate(
-					i,
-					[
-						numberOfMultiArcs / 2 - 1.5,
-						numberOfMultiArcs / 2 - 0.5,
-						numberOfMultiArcs / 2 + 0.5,
-					],
-					[-radius, 0, radius]
-				);
-				return (
-					<AbsoluteFill
-						style={{
-							marginTop: offset + move,
-						}}
-					>
-						<MultiArc
-							iters={iters}
-							progress={(j) => {
-								const jIndex = i % 2 === 0 ? j : iters - j - 1;
-								return interpolate(
-									frame - jIndex * 10 - i * 20,
-									[0, 20],
-									[0, 0.5],
-									{
-										extrapolateRight: 'clamp',
-									}
-								);
+			<AbsoluteFill
+				style={{
+					backgroundColor: '#00AEEF',
+					scale: '0.85',
+				}}
+			>
+				{new Array(numberOfMultiArcs).fill(0).map((_, i) => {
+					const offset = interpolate(
+						i,
+						[
+							numberOfMultiArcs / 2 - 1.5,
+							numberOfMultiArcs / 2 - 0.5,
+							numberOfMultiArcs / 2 + 0.5,
+						],
+						[-radius, 0, radius]
+					);
+					return (
+						<AbsoluteFill
+							style={{
+								marginTop: offset + move,
 							}}
-							center={center}
-							strokeWidth={strokeWidth}
-							counterClockwise={i % 2 === 0}
-						/>
-					</AbsoluteFill>
-				);
-			})}
+						>
+							<MultiArc
+								iters={iters}
+								progress={interpolate(frame - i * 20, [0, 20], [0, 0.75], {
+									extrapolateRight: 'clamp',
+								})}
+								center={center}
+								strokeWidth={strokeWidth}
+								counterClockwise={i % 2 === 0}
+								extraRotation={i === 0 ? -Math.PI * 1.5 : 0}
+							/>
+						</AbsoluteFill>
+					);
+				})}
+			</AbsoluteFill>
 		</AbsoluteFill>
 	);
 };
