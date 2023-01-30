@@ -1,6 +1,12 @@
 import {Pie} from '@remotion/shapes';
 import React from 'react';
-import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {
+	AbsoluteFill,
+	interpolate,
+	spring,
+	useCurrentFrame,
+	useVideoConfig,
+} from 'remotion';
 
 const MultiArc: React.FC<{
 	counterClockwise: boolean;
@@ -51,6 +57,7 @@ const MultiArc: React.FC<{
 const numberOfMultiArcs = 2;
 
 export const Arcs: React.FC = () => {
+	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const move = interpolate(frame, [0, 100], [0, 0]);
 	const center = interpolate(frame, [0, 200], [100, 200], {
@@ -61,6 +68,14 @@ export const Arcs: React.FC = () => {
 	});
 	const iters = 4;
 	const radius = center * 2 + strokeWidth * 2 * (iters - 1);
+	const progress = spring({
+		fps,
+		frame,
+		config: {
+			damping: 200,
+		},
+		durationInFrames: 60,
+	});
 
 	return (
 		<AbsoluteFill
@@ -92,9 +107,17 @@ export const Arcs: React.FC = () => {
 						>
 							<MultiArc
 								iters={iters}
-								progress={interpolate(frame - i * 20, [0, 20], [0, 0.75], {
-									extrapolateRight: 'clamp',
-								})}
+								progress={interpolate(
+									progress,
+									[
+										i * (1 / numberOfMultiArcs),
+										(i + 1) * (1 / numberOfMultiArcs),
+									],
+									[0, 0.75],
+									{
+										extrapolateRight: 'clamp',
+									}
+								)}
 								center={center}
 								strokeWidth={strokeWidth}
 								counterClockwise={i % 2 === 0}
