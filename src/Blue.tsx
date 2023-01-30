@@ -1,6 +1,7 @@
-import {Rect, Triangle} from '@remotion/shapes';
+import {Pie, Rect, Triangle} from '@remotion/shapes';
 import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {BlueArc} from './BlueArc';
 import {BlueLetter} from './BlueLetter';
 import {IncreasingStar} from './IncreasingStar';
 import {WeirdEye} from './WeirdEye';
@@ -91,6 +92,9 @@ export const Blue: React.FC = () => {
 										{index === 4 ? <BlueLetter>A</BlueLetter> : null}
 										{index === 9 ? <BlueLetter>P</BlueLetter> : null}
 										{index === 11 ? <BlueLetter>E</BlueLetter> : null}
+										{index === 12 ? (
+											<BlueArc radius={(width / grid / 2) * 0.7} />
+										) : null}
 										{index === 14 ? <BlueLetter>S</BlueLetter> : null}
 									</div>
 								);
