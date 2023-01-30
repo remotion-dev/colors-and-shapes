@@ -1,11 +1,18 @@
 import {useVideoConfig} from 'remotion';
 import {noise2D} from '@remotion/noise';
-import {Ell, Ellipse, Ellipseipse, Rect, Triangle} from '@remotion/shapes';
+import {Ellipse, Rect, Triangle} from '@remotion/shapes';
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame} from 'remotion';
 
 export const Yellow: React.FC = () => {
+	const innerRx = 100;
+	const innerRy = 100;
+
+	const outerRx = 235;
+	const outerRy = 235;
+
 	const {width, height} = useVideoConfig();
+
 	return (
 		<AbsoluteFill
 			style={{
@@ -40,8 +47,8 @@ export const Yellow: React.FC = () => {
 						strokeWidth={6}
 						stroke="#0e0201"
 						fill="#e64236"
-						rx={230}
-						ry={230}
+						rx={outerRx}
+						ry={outerRy}
 					/>
 				</AbsoluteFill>
 				<AbsoluteFill
@@ -54,21 +61,31 @@ export const Yellow: React.FC = () => {
 						strokeWidth={6}
 						stroke="#0e0201"
 						fill="#fabd40"
-						ry={100}
-						rx={100}
+						ry={innerRx}
+						rx={innerRy}
 					/>
 				</AbsoluteFill>
-				<RotatingCircle />
-			</AbsoluteFill>{' '}
+				<RotatingCircle
+					innerRx={innerRx}
+					outerRx={outerRx}
+					innerRy={innerRy}
+					outerRy={outerRy}
+				/>
+			</AbsoluteFill>
 		</AbsoluteFill>
 	);
 };
 
-const RotatingCircle: React.FC = () => {
+const RotatingCircle: React.FC<{
+	innerRx: number;
+	innerRy: number;
+	outerRx: number;
+	outerRy: number;
+}> = ({innerRx, innerRy, outerRx, outerRy}) => {
 	const frame = useCurrentFrame();
 
-	const x = Math.sin(-frame / 30) * 165;
-	const y = Math.cos(-frame / 30) * 165;
+	const x = (Math.sin(-frame / 30) * (innerRx + outerRx)) / 2;
+	const y = (Math.cos(-frame / 30) * (innerRy + outerRy)) / 2;
 
 	return (
 		<AbsoluteFill
@@ -82,8 +99,8 @@ const RotatingCircle: React.FC = () => {
 				strokeWidth={6}
 				stroke="#0e0201"
 				fill="#fabd40"
-				rx={65}
-				ry={65}
+				rx={(outerRx - innerRx) / 2}
+				ry={(outerRy - innerRy) / 2}
 			/>
 		</AbsoluteFill>
 	);
@@ -115,7 +132,6 @@ const TriangleStorm: React.FC = () => {
 };
 
 export const TriangleComp: React.FC = () => {
-	const {width, height} = useVideoConfig();
 	return (
 		<AbsoluteFill
 			style={{
