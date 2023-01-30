@@ -5,6 +5,7 @@ import {BothShapes} from './BothShapes';
 import {Camera} from './Camera';
 import {MyComposition} from './Composition';
 import {Feathers} from './Feathers';
+import {OrangeBlack} from './OrangeBlack';
 import {Yellow} from './Yellow';
 
 export const RemotionRoot: React.FC = () => {
@@ -75,6 +76,14 @@ export const RemotionRoot: React.FC = () => {
 			<Composition
 				id="Feathers"
 				component={Feathers}
+				durationInFrames={6 * 30}
+				fps={30}
+				width={1080}
+				height={1080}
+			/>
+			<Composition
+				id="OrangeBlack"
+				component={OrangeBlack}
 				durationInFrames={6 * 30}
 				fps={30}
 				width={1080}

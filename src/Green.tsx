@@ -87,7 +87,7 @@ export const Green: React.FC = () => {
 										}}
 										width={(width / columns) * scale}
 										height={factor * height * scale}
-										fill="#36b000"
+										fill="#6ab04c"
 										edgeRoundness={edgeRoundness}
 										stroke="black"
 										strokeWidth={6}
