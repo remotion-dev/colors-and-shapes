@@ -38,7 +38,7 @@ const MultiArc: React.FC<{
 					>
 						<Pie
 							counterClockwise={counterClockwise}
-							stroke="#EF539E"
+							stroke="#fff"
 							strokeWidth={strokeWidth}
 							fill="none"
 							closePath={false}
@@ -74,7 +74,7 @@ export const Arcs: React.FC = () => {
 		config: {
 			damping: 200,
 		},
-		durationInFrames: 60,
+		durationInFrames: 90,
 	});
 
 	return (
@@ -89,44 +89,50 @@ export const Arcs: React.FC = () => {
 					scale: '0.85',
 				}}
 			>
-				{new Array(numberOfMultiArcs).fill(0).map((_, i) => {
-					const offset = interpolate(
-						i,
-						[
-							numberOfMultiArcs / 2 - 1.5,
-							numberOfMultiArcs / 2 - 0.5,
-							numberOfMultiArcs / 2 + 0.5,
-						],
-						[-radius, 0, radius]
-					);
-					return (
-						<AbsoluteFill
-							style={{
-								marginTop: offset + move,
-							}}
-						>
-							<MultiArc
-								iters={iters}
-								progress={interpolate(
-									progress,
-									[
-										i * (1 / numberOfMultiArcs),
-										(i + 1) * (1 / numberOfMultiArcs),
-									],
-									[0, 0.75],
-									{
-										extrapolateRight: 'clamp',
-									}
-								)}
-								center={center}
-								strokeWidth={strokeWidth}
-								counterClockwise={i % 2 === 0}
-								extraRotation={i === 0 ? -Math.PI * 1.5 : 0}
-							/>
-						</AbsoluteFill>
-					);
-				})}
-			</AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						transform: `rotate(${progress * 180}deg)`,
+					}}
+				>
+					{new Array(numberOfMultiArcs).fill(0).map((_, i) => {
+						const offset = interpolate(
+							i,
+							[
+								numberOfMultiArcs / 2 - 1.5,
+								numberOfMultiArcs / 2 - 0.5,
+								numberOfMultiArcs / 2 + 0.5,
+							],
+							[-radius, 0, radius]
+						);
+						return (
+							<AbsoluteFill
+								style={{
+									marginTop: offset + move,
+								}}
+							>
+								<MultiArc
+									iters={iters}
+									progress={interpolate(
+										progress,
+										[
+											i * (1 / numberOfMultiArcs),
+											(i + 1) * (1 / numberOfMultiArcs),
+										],
+										[0, 0.75],
+										{
+											extrapolateRight: 'clamp',
+										}
+									)}
+									center={center}
+									strokeWidth={strokeWidth}
+									counterClockwise={i % 2 === 0}
+									extraRotation={i === 0 ? -Math.PI * 1.5 : 0}
+								/>
+							</AbsoluteFill>
+						);
+					})}
+				</AbsoluteFill>
+			</AbsoluteFill>{' '}
 		</AbsoluteFill>
 	);
 };
