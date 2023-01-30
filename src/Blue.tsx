@@ -1,4 +1,4 @@
-import {Rect, Triangle} from '@remotion/shapes';
+import {Rect} from '@remotion/shapes';
 import React from 'react';
 import {
 	AbsoluteFill,
@@ -10,6 +10,7 @@ import {
 import {BlueArc} from './BlueArc';
 import {BlueLetter} from './BlueLetter';
 import {IncreasingStar} from './IncreasingStar';
+import {MysteriousTriangle} from './MysteriousTriangle';
 import {OutArc, STROKE_WIDTH} from './OutArc';
 import {WeirdEye} from './WeirdEye';
 
@@ -128,15 +129,17 @@ export const Blue: React.FC = () => {
 												}}
 											/>
 											{index === 2 ? (
-												<Triangle
+												<AbsoluteFill
 													style={{
-														position: 'absolute',
-														scale: '0.7',
+														justifyContent: 'center',
+														alignItems: 'center',
+														color: '#20e8c2',
+														fontFamily: 'GT Planar',
+														transform: `rotate(${-spr2 * Math.PI * 0.5}rad)`,
 													}}
-													length={width / grid - 20}
-													direction="up"
-													fill="#20e8c2"
-												/>
+												>
+													<MysteriousTriangle length={width / grid - 100} />
+												</AbsoluteFill>
 											) : null}
 											{index === 5 || index === 10 ? (
 												<Rect

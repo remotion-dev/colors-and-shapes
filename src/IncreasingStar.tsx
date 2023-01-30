@@ -6,7 +6,7 @@ export const IncreasingStar: React.FC<{
 	width: number;
 }> = ({width}) => {
 	const frame = useCurrentFrame();
-	const points = interpolate(frame, [0, 100], [10, 20]);
+	const points = interpolate(frame % 100, [0, 50, 100], [5, 10, 5]);
 
 	return (
 		<Star
