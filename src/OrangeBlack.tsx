@@ -1,4 +1,4 @@
-import {Rect, Triangle} from '@remotion/shapes';
+import {Rect, Star, Triangle} from '@remotion/shapes';
 import {
 	AbsoluteFill,
 	interpolate,
@@ -29,86 +29,129 @@ export const OrangeBlack = () => {
 		<AbsoluteFill
 			style={{
 				backgroundColor: '#f6e58d',
-				justifyContent: 'center',
-				alignItems: 'center',
 			}}
 		>
 			<AbsoluteFill
 				style={{
+					transform: `scale(0.8)`,
+					backgroundColor: '#fff',
 					justifyContent: 'center',
 					alignItems: 'center',
+					overflow: 'hidden',
+					border: '5.5px solid black',
 				}}
 			>
-				<Triangle
-					length={110}
-					stroke="black"
-					fill="white"
-					direction="up"
-					strokeWidth={5.5}
+				<AbsoluteFill
 					style={{
-						transform: `translateY(${interpolate(
-							spr(20),
-							[0, 1],
-							[1080, 0]
-						)}px) rotate(${interpolate(spr(0), [0, 1], [0, 360])}deg)`,
-						marginLeft: -500 - progress * 750,
+						justifyContent: 'center',
+						alignItems: 'center',
 					}}
-				/>
-			</AbsoluteFill>
-			<AbsoluteFill
-				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-				}}
-			>
-				<Rect
-					width={110}
-					height={110}
-					stroke="black"
-					fill="white"
-					strokeWidth={5.5}
+				>
+					{new Array(10).fill(true).map(() => {
+						return (
+							<>
+								<div
+									style={{
+										display: 'flex',
+										flexDirection: 'row',
+									}}
+								>
+									{new Array(10).fill(true).map(() => {
+										return (
+											<Star
+												fill="#f6e58d"
+												style={{
+													opacity: 0.2,
+													margin: 30,
+												}}
+												points={4}
+												innerRadius={8}
+												outerRadius={20}
+											/>
+										);
+									})}
+								</div>
+							</>
+						);
+					})}
+				</AbsoluteFill>
+				<AbsoluteFill
 					style={{
-						transform: `translateY(${interpolate(
-							spr(10),
-							[0, 1],
-							[1080, 0]
-						)}px) rotate(${interpolate(spr(1), [0, 1], [0, 360])}deg)`,
-						marginLeft: 400 + progress * 850,
+						justifyContent: 'center',
+						alignItems: 'center',
 					}}
-				/>
-			</AbsoluteFill>
-			{new Array(3).fill(true).map((_, i) => {
-				const reverseIndex = 2 - i;
-				return (
-					<AbsoluteFill
+				>
+					<Triangle
+						length={110}
+						stroke="black"
+						fill="#f6e58d"
+						direction="up"
+						strokeWidth={5.5}
 						style={{
-							justifyContent: 'center',
-							alignItems: 'center',
 							transform: `translateY(${interpolate(
-								spr(30),
+								spr(20),
 								[0, 1],
 								[1080, 0]
-							)}px)`,
+							)}px) rotate(${interpolate(spr(0), [0, 1], [0, 360])}deg)`,
+							marginLeft: -500 - progress * 750,
 						}}
-					>
-						<Triangle
-							direction="right"
-							length={200 + progress * reverseIndex * 100}
-							stroke="black"
-							fill="white"
-							strokeWidth={5.5}
-							edgeRoundness={interpolate(
-								progress,
+					/>
+				</AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<Rect
+						width={110}
+						height={110}
+						stroke="black"
+						fill="#f6e58d"
+						strokeWidth={5.5}
+						style={{
+							transform: `translateY(${interpolate(
+								spr(10),
 								[0, 1],
-								[Math.sqrt(2) - 1, 0.7]
-							)}
+								[1080, 0]
+							)}px) rotate(${interpolate(spr(1), [0, 1], [0, 360])}deg)`,
+							marginLeft: 400 + progress * 850,
+						}}
+					/>
+				</AbsoluteFill>
+				{new Array(3).fill(true).map((_, i) => {
+					const reverseIndex = 2 - i;
+					return (
+						<AbsoluteFill
 							style={{
-								marginLeft: reverseIndex * 25 * progress,
+								justifyContent: 'center',
+								alignItems: 'center',
+								transform: `translateY(${interpolate(
+									spr(30),
+									[0, 1],
+									[1080, 0]
+								)}px)`,
 							}}
-						/>
-					</AbsoluteFill>
-				);
-			})}
+						>
+							<Triangle
+								direction="right"
+								length={200 + progress * reverseIndex * 100}
+								stroke="black"
+								fill="#f6e58d"
+								strokeWidth={5.5}
+								edgeRoundness={interpolate(
+									progress,
+									[0, 1],
+									[Math.sqrt(2) - 1, 0.7]
+								)}
+								style={{
+									marginLeft: reverseIndex * 25 * progress,
+								}}
+							/>
+						</AbsoluteFill>
+					);
+				})}
+			</AbsoluteFill>
 		</AbsoluteFill>
 	);
 };
