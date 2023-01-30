@@ -28,8 +28,9 @@ export const Green: React.FC = () => {
 		fps,
 		frame: frame - 50,
 		config: {
-			mass: 1.2,
+			damping: 200,
 		},
+		durationInFrames: 20,
 	});
 	const spr2 = spring({
 		fps,
@@ -50,6 +51,8 @@ export const Green: React.FC = () => {
 			<AbsoluteFill
 				style={{
 					transform: 'scale(0.8)',
+					justifyContent: 'center',
+					alignItems: 'center',
 				}}
 			>
 				{new Array(rows).fill(true).map((_, i) => {
@@ -66,7 +69,7 @@ export const Green: React.FC = () => {
 								const edgeRoundness = interpolate(
 									spr1 + spr2,
 									[0, 1, 2],
-									[0.1, 0.6, 0.1]
+									[0.1, 0.6, 0.3]
 								);
 
 								const rotation = interpolate(
@@ -80,12 +83,14 @@ export const Green: React.FC = () => {
 								return (
 									<Rect
 										style={{
-											transform: `rotate(${rotation}deg) scale(${scale})`,
+											transform: `rotate(${rotation}deg)`,
 										}}
-										width={width / columns}
-										height={factor * height}
+										width={(width / columns) * scale}
+										height={factor * height * scale}
 										fill="#36b000"
 										edgeRoundness={edgeRoundness}
+										stroke="black"
+										strokeWidth={6}
 									/>
 								);
 							})}
