@@ -1,9 +1,10 @@
-import {Pie, Rect, Triangle} from '@remotion/shapes';
+import {Rect, Triangle} from '@remotion/shapes';
 import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {BlueArc} from './BlueArc';
 import {BlueLetter} from './BlueLetter';
 import {IncreasingStar} from './IncreasingStar';
+import {OutArc, STROKE_WIDTH} from './OutArc';
 import {WeirdEye} from './WeirdEye';
 
 const row: React.CSSProperties = {
@@ -26,11 +27,51 @@ export const Blue: React.FC = () => {
 					scale: '0.7',
 				}}
 			>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginTop: -height / 2 - 3,
+						marginLeft: -width / 2 - 3,
+					}}
+				>
+					<OutArc />
+				</AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginTop: -height / 2 - 3,
+						marginLeft: width / 2 + 2.5,
+					}}
+				>
+					<OutArc />
+				</AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginTop: height / 2 + 3,
+						marginLeft: width / 2 + 3,
+					}}
+				>
+					<OutArc />
+				</AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginTop: height / 2 + 3,
+						marginLeft: -width / 2 + 3,
+					}}
+				>
+					<OutArc />
+				</AbsoluteFill>
 				<Rect
 					style={{
 						position: 'absolute',
 					}}
-					fill="transparent"
+					fill="#061d3c"
 					width={width}
 					height={height}
 					strokeWidth={20}
@@ -55,7 +96,7 @@ export const Blue: React.FC = () => {
 										<Rect
 											fill="transparent"
 											stroke="#20e8c2"
-											strokeWidth={20}
+											strokeWidth={STROKE_WIDTH}
 											width={width / grid}
 											height={height / grid}
 											style={{
