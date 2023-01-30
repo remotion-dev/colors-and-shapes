@@ -1,32 +1,16 @@
 import React from 'react';
-import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {useVideoConfig} from 'remotion';
 
 export const STROKE_WIDTH = 20;
 
 export const OutArc: React.FC = () => {
-	const {width, height, fps} = useVideoConfig();
-	const frame = useCurrentFrame();
-
-	const prog1 = spring({
-		fps,
-		frame: frame - 30,
-		config: {
-			damping: 100,
-		},
-	});
-	const prog2 = spring({
-		fps,
-		frame: frame - 60,
-		config: {
-			damping: 100,
-		},
-	});
+	const {width, height} = useVideoConfig();
 
 	const centerX = width / 2;
 	const centerY = height / 2;
 
-	const x = interpolate(prog1 + prog2, [0, 1, 2], [-1, -1, 1]);
-	const y = interpolate(prog1 + prog2, [0, 1, 2], [1, -1, -1]);
+	const x = -1;
+	const y = 1;
 
 	return (
 		<svg
