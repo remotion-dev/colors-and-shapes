@@ -25,8 +25,8 @@ export const OutArc: React.FC = () => {
 	const centerX = width / 2;
 	const centerY = height / 2;
 
-	const x = interpolate(prog1 + prog2, [0, 1, 2], [1, -1, -1]);
-	const y = interpolate(prog1 + prog2, [0, 1, 2], [-1, -1, 1]);
+	const x = interpolate(prog1 + prog2, [0, 1, 2], [-1, -1, 1]);
+	const y = interpolate(prog1 + prog2, [0, 1, 2], [1, -1, -1]);
 
 	return (
 		<svg
