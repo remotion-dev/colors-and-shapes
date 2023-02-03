@@ -13,7 +13,7 @@ export const OrangeBlack = () => {
 
 	const progress = spring({
 		fps,
-		frame: frame - 50,
+		frame: frame - 60,
 	});
 
 	const spr = (f: number) =>
@@ -24,6 +24,14 @@ export const OrangeBlack = () => {
 				damping: 15,
 			},
 		});
+
+	const out = spring({
+		fps,
+		frame: frame - 95,
+		config: {
+			damping: 200,
+		},
+	});
 
 	return (
 		<AbsoluteFill
@@ -126,11 +134,10 @@ export const OrangeBlack = () => {
 							style={{
 								justifyContent: 'center',
 								alignItems: 'center',
-								transform: `translateY(${interpolate(
-									spr(30),
-									[0, 1],
-									[1080, 0]
-								)}px)`,
+								transform: `translateY(${
+									interpolate(spr(30), [0, 1], [1080, 0]) +
+									interpolate(out, [0, 1], [0, -1080])
+								}px)`,
 							}}
 						>
 							<Triangle

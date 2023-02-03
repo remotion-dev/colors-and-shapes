@@ -58,8 +58,8 @@ export const Blue: React.FC = () => {
 						transform: `translateX(${interpolate(
 							spr,
 							[0, 1],
-							[-width, 0]
-						)}px) translateY(${interpolate(spr, [0, 1], [height, 0])}px)`,
+							[-width * 1.2, 0]
+						)}px) translateY(${interpolate(spr, [0, 1], [height * 2, 0])}px)`,
 					}}
 				>
 					<AbsoluteFill

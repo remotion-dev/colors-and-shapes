@@ -3,8 +3,8 @@ import {Arcs} from './Arcs';
 import {Blue} from './Blue';
 import {BothShapes} from './BothShapes';
 import {Camera} from './Camera';
-import {MyComposition} from './Composition';
 import {Feathers} from './Feathers';
+import {Green} from './Green';
 import {OrangeBlack} from './OrangeBlack';
 import {Yellow} from './Yellow';
 
@@ -13,7 +13,7 @@ export const RemotionRoot: React.FC = () => {
 		<>
 			<Composition
 				id="2-Green"
-				component={MyComposition}
+				component={Green}
 				durationInFrames={200}
 				fps={30}
 				width={1080}
@@ -31,7 +31,7 @@ export const RemotionRoot: React.FC = () => {
 				<Composition
 					id="Camera"
 					component={BothShapes}
-					durationInFrames={400}
+					durationInFrames={90}
 					fps={30}
 					width={1080}
 					height={1080}
@@ -39,7 +39,7 @@ export const RemotionRoot: React.FC = () => {
 				<Composition
 					id="OnlyReal"
 					component={Camera}
-					durationInFrames={400}
+					durationInFrames={90}
 					fps={30}
 					width={1080}
 					height={1080}
@@ -50,7 +50,7 @@ export const RemotionRoot: React.FC = () => {
 				<Composition
 					id="OnlyTrace"
 					component={Camera}
-					durationInFrames={400}
+					durationInFrames={90}
 					fps={30}
 					width={1080}
 					height={1080}
@@ -84,9 +84,9 @@ export const RemotionRoot: React.FC = () => {
 				height={1080}
 			/>
 			<Composition
-				id="OrangeBlack"
+				id="7-TriangleCircleSquare"
 				component={OrangeBlack}
-				durationInFrames={6 * 30}
+				durationInFrames={100}
 				fps={30}
 				width={1080}
 				height={1080}

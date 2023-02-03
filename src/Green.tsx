@@ -20,16 +20,22 @@ export const Green: React.FC = () => {
 	const {width, height, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
-	const weights: number[] = new Array(rows).fill(0).map((_, i) => {
-		return i + frame / 10;
+	const spr0 = spring({
+		fps,
+		frame,
+		config: {
+			damping: 200,
+		},
+		durationInFrames: 40,
 	});
 
 	const spr1 = spring({
 		fps,
-		frame: frame - 50,
+		frame: frame - 40,
 		config: {
 			damping: 200,
 		},
+
 		durationInFrames: 20,
 	});
 
@@ -47,6 +53,10 @@ export const Green: React.FC = () => {
 		config: {
 			damping: 200,
 		},
+	});
+
+	const weights: number[] = new Array(rows).fill(0).map((_, i) => {
+		return i + (spr0 - spr3) * 0.3;
 	});
 
 	const totalWeight = weights.reduce((a, b) => a + b, 0);
@@ -70,10 +80,11 @@ export const Green: React.FC = () => {
 						<div style={row}>
 							{new Array(columns).fill(true).map(() => {
 								const weightFactor = weights[i] / totalWeight;
+
 								const factor = interpolate(
-									spr1,
-									[0, 1],
-									[weightFactor, 1 / rows]
+									spr0 + spr3,
+									[0, 1, 2],
+									[weightFactor, 1 / rows, weightFactor]
 								);
 
 								const edgeRoundness = interpolate(
@@ -85,7 +96,7 @@ export const Green: React.FC = () => {
 								const rotation = interpolate(
 									spr1 + spr2 + spr3,
 									[0, 1, 2, 3],
-									[0, 45, 90 + 45, 270]
+									[0, 45, 90 + 45, 0]
 								);
 
 								const scale = interpolate(spr1 + spr2, [0, 1, 2], [1, 0.3, 1]);

@@ -45,7 +45,12 @@ export const Yellow: React.FC = () => {
 
 const RotatingItems: React.FC = () => {
 	const frame = useCurrentFrame();
-	const rotation = interpolate(frame, [0, 199], [0, Math.PI * 2]);
+	const {durationInFrames} = useVideoConfig();
+	const rotation = interpolate(
+		frame,
+		[0, durationInFrames - 1],
+		[0, Math.PI * 2]
+	);
 
 	const initX = 80;
 	const initY = 80;
@@ -126,9 +131,12 @@ const RotatingCircle: React.FC<{
 	outerRy: number;
 }> = ({innerRx, innerRy, outerRx, outerRy}) => {
 	const frame = useCurrentFrame();
+	const {durationInFrames} = useVideoConfig();
 
-	const x = (Math.sin(-frame / 25) * (innerRx + outerRx)) / 2;
-	const y = (Math.cos(-frame / 25 + Math.PI) * (innerRy + outerRy)) / 2;
+	const loopedFrame = (frame / durationInFrames) * Math.PI * 2;
+
+	const x = (Math.sin(loopedFrame) * (innerRx + outerRx)) / 2;
+	const y = (Math.cos(loopedFrame + Math.PI) * (innerRy + outerRy)) / 2;
 
 	return (
 		<AbsoluteFill
@@ -151,12 +159,20 @@ const RotatingCircle: React.FC<{
 
 const TriangleStorm: React.FC = () => {
 	const frame = useCurrentFrame();
+	const {durationInFrames} = useVideoConfig();
+
+	const loopedFrame = (frame / durationInFrames) * Math.PI * 2;
+
 	return (
 		<>
 			{new Array(30).fill(true).map((_, t) => {
-				const noiseX = noise2D('my-noise', t, frame / 1000);
-				const noiseY = noise2D('my-noise-y', t, frame / 1000);
-				const noiseRotation = noise2D('my-noise-rot', t, frame / 1000);
+				const noiseX = noise2D('my-noise', t, 0.1 * Math.sin(loopedFrame));
+				const noiseY = noise2D('my-noise-y', t, 0.1 * Math.sin(loopedFrame));
+				const noiseRotation = noise2D(
+					'my-noise-rot',
+					t,
+					0.1 * Math.sin(loopedFrame)
+				);
 
 				return (
 					<AbsoluteFill
