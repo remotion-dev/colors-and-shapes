@@ -1,4 +1,4 @@
-import {Composition} from 'remotion';
+import {Composition, Folder} from 'remotion';
 import {Arcs} from './Arcs';
 import {Blue} from './Blue';
 import {BothShapes} from './BothShapes';
@@ -12,7 +12,7 @@ export const RemotionRoot: React.FC = () => {
 	return (
 		<>
 			<Composition
-				id="Green"
+				id="2-Green"
 				component={MyComposition}
 				durationInFrames={200}
 				fps={30}
@@ -20,43 +20,45 @@ export const RemotionRoot: React.FC = () => {
 				height={1080}
 			/>
 			<Composition
-				id="Blue"
+				id="3-Blue"
 				component={Blue}
 				durationInFrames={400}
 				fps={30}
 				width={1080}
 				height={1080}
 			/>
-			<Composition
-				id="Camera"
-				component={Camera}
-				durationInFrames={400}
-				fps={30}
-				width={1080}
-				height={1080}
-				defaultProps={{
-					trace: false,
-				}}
-			/>
-			<Composition
-				id="CameraTrace"
-				component={Camera}
-				durationInFrames={400}
-				fps={30}
-				width={1080}
-				height={1080}
-				defaultProps={{
-					trace: true,
-				}}
-			/>
-			<Composition
-				id="BothShapes"
-				component={BothShapes}
-				durationInFrames={400}
-				fps={30}
-				width={1080}
-				height={1080}
-			/>
+			<Folder name="1-Camera">
+				<Composition
+					id="Camera"
+					component={Camera}
+					durationInFrames={400}
+					fps={30}
+					width={1080}
+					height={1080}
+					defaultProps={{
+						trace: false,
+					}}
+				/>
+				<Composition
+					id="CameraTrace"
+					component={Camera}
+					durationInFrames={400}
+					fps={30}
+					width={1080}
+					height={1080}
+					defaultProps={{
+						trace: true,
+					}}
+				/>
+				<Composition
+					id="BothShapes"
+					component={BothShapes}
+					durationInFrames={400}
+					fps={30}
+					width={1080}
+					height={1080}
+				/>
+			</Folder>
 			<Composition
 				id="Arcs"
 				component={Arcs}

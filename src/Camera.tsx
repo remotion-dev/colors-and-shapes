@@ -1,4 +1,4 @@
-import {interpolate, interpolateColors} from 'remotion';
+import {interpolate} from 'remotion';
 import {useCurrentFrame} from 'remotion';
 import {useVideoConfig} from 'remotion';
 import {Circle} from '@remotion/shapes';
@@ -36,14 +36,11 @@ export const Camera: React.FC<{
 
 	const scale = interpolate(spr, [0, 1], [1, 0.5]);
 	const totalScale = interpolate(spr, [0, 1], [1.2, 1]);
-	const color = interpolateColors(spr, [0, 1], ['#000', '#555']);
 
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundImage: trace
-					? 'linear-gradient(#eee, #eee)'
-					: `radial-gradient(${color}, #000)`,
+				background: trace ? '#fff' : `#333`,
 				scale: String(totalScale),
 			}}
 		>

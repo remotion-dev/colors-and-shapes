@@ -32,6 +32,7 @@ export const Green: React.FC = () => {
 		},
 		durationInFrames: 20,
 	});
+
 	const spr2 = spring({
 		fps,
 		frame: frame - 70,
@@ -40,7 +41,16 @@ export const Green: React.FC = () => {
 		},
 	});
 
+	const spr3 = spring({
+		fps,
+		frame: frame - 90,
+		config: {
+			damping: 200,
+		},
+	});
+
 	const totalWeight = weights.reduce((a, b) => a + b, 0);
+	const margin = interpolate(spr1 + spr2, [0, 1, 2], [0, 60, 0]);
 
 	return (
 		<AbsoluteFill
@@ -67,15 +77,15 @@ export const Green: React.FC = () => {
 								);
 
 								const edgeRoundness = interpolate(
-									spr1 + spr2,
-									[0, 1, 2],
-									[0.1, 0.6, 0.3]
+									spr1 + spr2 + spr3,
+									[0, 1, 2, 3],
+									[0.1, 0.6, 0.3, 0.1]
 								);
 
 								const rotation = interpolate(
-									spr1 + spr2,
-									[0, 1, 2],
-									[0, 45, 90 + 45]
+									spr1 + spr2 + spr3,
+									[0, 1, 2, 3],
+									[0, 45, 90 + 45, 270]
 								);
 
 								const scale = interpolate(spr1 + spr2, [0, 1, 2], [1, 0.3, 1]);
@@ -84,6 +94,7 @@ export const Green: React.FC = () => {
 									<Rect
 										style={{
 											transform: `rotate(${rotation}deg)`,
+											margin,
 										}}
 										width={(width / columns) * scale}
 										height={factor * height * scale}
