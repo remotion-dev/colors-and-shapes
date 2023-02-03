@@ -4,18 +4,24 @@ import {Ellipse, Rect, Triangle} from '@remotion/shapes';
 import React from 'react';
 import {AbsoluteFill, useCurrentFrame} from 'remotion';
 
+const PINK = '#d777a2';
+const YELLOW = '#fabd40';
+const STROKE = '#000000';
+const GREEN = '#426e5f';
+const RED = '#e64236';
+
 export const Yellow: React.FC = () => {
 	const {width, height} = useVideoConfig();
 
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: '#d777a2',
+				backgroundColor: PINK,
 			}}
 		>
 			<AbsoluteFill
 				style={{
-					backgroundColor: '#fabd40',
+					backgroundColor: YELLOW,
 					justifyContent: 'center',
 					alignItems: 'center',
 					scale: '0.8',
@@ -26,7 +32,7 @@ export const Yellow: React.FC = () => {
 						width={width}
 						height={height}
 						fill="transparent"
-						stroke="#000"
+						stroke={STROKE}
 						strokeWidth={6}
 					/>
 				</AbsoluteFill>
@@ -39,7 +45,7 @@ export const Yellow: React.FC = () => {
 
 const RotatingItems: React.FC = () => {
 	const frame = useCurrentFrame();
-	const rotation = interpolate(frame, [0, 100], [0, Math.PI]);
+	const rotation = interpolate(frame, [0, 199], [0, Math.PI * 2]);
 
 	const initX = 80;
 	const initY = 80;
@@ -47,7 +53,7 @@ const RotatingItems: React.FC = () => {
 	const outerInitX = 200;
 	const outerInitY = 200;
 
-	const addX = 150;
+	const addX = 100;
 	const addY = 200;
 
 	const innerRx = initX + addX;
@@ -69,7 +75,7 @@ const RotatingItems: React.FC = () => {
 			>
 				<Ellipse
 					strokeWidth={outerRx - innerRx}
-					stroke="#e64236"
+					stroke={RED}
 					fill="transparent"
 					rx={outerRx - (outerRx - innerRx) / 2}
 					ry={outerRy - (outerRx - innerRx) / 2}
@@ -83,7 +89,7 @@ const RotatingItems: React.FC = () => {
 			>
 				<Ellipse
 					strokeWidth={6}
-					stroke="#000 "
+					stroke={STROKE}
 					fill="transparent"
 					rx={outerRx}
 					ry={outerRy}
@@ -97,7 +103,7 @@ const RotatingItems: React.FC = () => {
 			>
 				<Ellipse
 					strokeWidth={6}
-					stroke="#0e0201"
+					stroke={STROKE}
 					fill="transparent"
 					ry={innerRy}
 					rx={innerRx}
@@ -121,8 +127,8 @@ const RotatingCircle: React.FC<{
 }> = ({innerRx, innerRy, outerRx, outerRy}) => {
 	const frame = useCurrentFrame();
 
-	const x = (Math.sin(-frame / 30) * (innerRx + outerRx)) / 2;
-	const y = (Math.cos(-frame / 30 + Math.PI) * (innerRy + outerRy)) / 2;
+	const x = (Math.sin(-frame / 25) * (innerRx + outerRx)) / 2;
+	const y = (Math.cos(-frame / 25 + Math.PI) * (innerRy + outerRy)) / 2;
 
 	return (
 		<AbsoluteFill
@@ -134,8 +140,8 @@ const RotatingCircle: React.FC<{
 		>
 			<Ellipse
 				strokeWidth={6}
-				stroke="#0e0201"
-				fill="#fabd40"
+				stroke={STROKE}
+				fill={YELLOW}
 				rx={(outerRx - innerRx) / 2}
 				ry={(outerRy - innerRy) / 2}
 			/>
@@ -183,9 +189,9 @@ export const TriangleComp: React.FC = () => {
 				}}
 			>
 				<Triangle
-					stroke="#000"
+					stroke={STROKE}
 					strokeWidth={6}
-					fill="#426e5f"
+					fill={GREEN}
 					length={100}
 					direction="up"
 				/>
@@ -197,9 +203,9 @@ export const TriangleComp: React.FC = () => {
 				}}
 			>
 				<Triangle
-					stroke="#000"
+					stroke={STROKE}
 					strokeWidth={6}
-					fill="#fabd40"
+					fill={YELLOW}
 					length={70}
 					style={{
 						marginTop: 25,

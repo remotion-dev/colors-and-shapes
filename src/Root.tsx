@@ -30,6 +30,14 @@ export const RemotionRoot: React.FC = () => {
 			<Folder name="1-Camera">
 				<Composition
 					id="Camera"
+					component={BothShapes}
+					durationInFrames={400}
+					fps={30}
+					width={1080}
+					height={1080}
+				/>
+				<Composition
+					id="OnlyReal"
 					component={Camera}
 					durationInFrames={400}
 					fps={30}
@@ -40,7 +48,7 @@ export const RemotionRoot: React.FC = () => {
 					}}
 				/>
 				<Composition
-					id="CameraTrace"
+					id="OnlyTrace"
 					component={Camera}
 					durationInFrames={400}
 					fps={30}
@@ -50,33 +58,25 @@ export const RemotionRoot: React.FC = () => {
 						trace: true,
 					}}
 				/>
-				<Composition
-					id="BothShapes"
-					component={BothShapes}
-					durationInFrames={400}
-					fps={30}
-					width={1080}
-					height={1080}
-				/>
 			</Folder>
 			<Composition
-				id="Arcs"
+				id="4-Arcs"
 				component={Arcs}
-				durationInFrames={400}
+				durationInFrames={120}
 				fps={30}
 				width={1080}
 				height={1080}
 			/>
 			<Composition
-				id="Yellow"
+				id="5-Yellow"
 				component={Yellow}
-				durationInFrames={400}
+				durationInFrames={200}
 				fps={30}
 				width={1080}
 				height={1080}
 			/>
 			<Composition
-				id="Feathers"
+				id="6-Feathers"
 				component={Feathers}
 				durationInFrames={6 * 30}
 				fps={30}
