@@ -11,10 +11,11 @@ export const BlueArc: React.FC<{radius: number}> = ({radius}) => {
 			return (
 				spring({
 					fps,
-					frame: frame - i * 10,
+					frame,
 					config: {
 						damping: 200,
 					},
+					delay: i * 10,
 				}) *
 				(random(i) * 2 - 1)
 			);

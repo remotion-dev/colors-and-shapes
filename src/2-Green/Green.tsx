@@ -31,28 +31,30 @@ export const Green: React.FC = () => {
 
 	const spr1 = spring({
 		fps,
-		frame: frame - 40,
+		frame,
 		config: {
 			damping: 200,
 		},
-
+		delay: 40,
 		durationInFrames: 20,
 	});
 
 	const spr2 = spring({
 		fps,
-		frame: frame - 70,
+		frame,
 		config: {
 			damping: 200,
 		},
+		delay: 70,
 	});
 
 	const spr3 = spring({
 		fps,
-		frame: frame - 100,
+		frame,
 		config: {
 			damping: 200,
 		},
+		delay: 100,
 	});
 
 	const weights: number[] = new Array(rows).fill(0).map((_, i) => {

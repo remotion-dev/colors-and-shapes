@@ -1,4 +1,4 @@
-import {Rect, Star, Triangle} from '@remotion/shapes';
+import {Rect, Triangle} from '@remotion/shapes';
 import {
 	AbsoluteFill,
 	interpolate,
@@ -6,31 +6,35 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {StarBackground} from './StarBackground';
 
 export const Branded = () => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
-	const progress = spring({
+	const explosion = spring({
 		fps,
-		frame: frame - 60,
+		frame,
+		delay: 60,
 	});
 
 	const spr = (f: number) =>
 		spring({
 			fps,
-			frame: frame - f,
+			frame,
 			config: {
 				damping: 15,
 			},
+			delay: f,
 		});
 
-	const out = spring({
+	const exit = spring({
 		fps,
-		frame: frame - 95,
+		frame,
 		config: {
 			damping: 200,
 		},
+		delay: 95,
 	});
 
 	return (
@@ -49,40 +53,7 @@ export const Branded = () => {
 					border: '5.5px solid black',
 				}}
 			>
-				<AbsoluteFill
-					style={{
-						justifyContent: 'center',
-						alignItems: 'center',
-					}}
-				>
-					{new Array(10).fill(true).map(() => {
-						return (
-							<>
-								<div
-									style={{
-										display: 'flex',
-										flexDirection: 'row',
-									}}
-								>
-									{new Array(10).fill(true).map(() => {
-										return (
-											<Star
-												fill="#f6e58d"
-												style={{
-													opacity: 0.2,
-													margin: 30,
-												}}
-												points={4}
-												innerRadius={8}
-												outerRadius={20}
-											/>
-										);
-									})}
-								</div>
-							</>
-						);
-					})}
-				</AbsoluteFill>
+				<StarBackground />
 				<AbsoluteFill
 					style={{
 						justifyContent: 'center',
@@ -101,7 +72,7 @@ export const Branded = () => {
 								[0, 1],
 								[1080, 0]
 							)}px) rotate(${interpolate(spr(0), [0, 1], [0, 360])}deg)`,
-							marginLeft: -500 - progress * 750,
+							marginLeft: -500 - explosion * 750,
 						}}
 					/>
 				</AbsoluteFill>
@@ -123,7 +94,7 @@ export const Branded = () => {
 								[0, 1],
 								[1080, 0]
 							)}px) rotate(${interpolate(spr(1), [0, 1], [0, 360])}deg)`,
-							marginLeft: 400 + progress * 850,
+							marginLeft: 400 + explosion * 850,
 						}}
 					/>
 				</AbsoluteFill>
@@ -136,23 +107,23 @@ export const Branded = () => {
 								alignItems: 'center',
 								transform: `translateY(${
 									interpolate(spr(30), [0, 1], [1080, 0]) +
-									interpolate(out, [0, 1], [0, -1080])
+									interpolate(exit, [0, 1], [0, -1080])
 								}px)`,
 							}}
 						>
 							<Triangle
 								direction="right"
-								length={200 + progress * reverseIndex * 100}
+								length={200 + explosion * reverseIndex * 100}
 								stroke="black"
 								fill="#f6e58d"
 								strokeWidth={5.5}
 								edgeRoundness={interpolate(
-									progress,
+									explosion,
 									[0, 1],
 									[Math.sqrt(2) - 1, 0.7]
 								)}
 								style={{
-									marginLeft: reverseIndex * 25 * progress,
+									marginLeft: reverseIndex * 25 * explosion,
 								}}
 							/>
 						</AbsoluteFill>

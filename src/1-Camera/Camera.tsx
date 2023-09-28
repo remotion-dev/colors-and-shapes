@@ -15,17 +15,19 @@ export const Camera: React.FC<{
 	const spr =
 		spring({
 			fps,
-			frame: frame - 20,
+			frame,
 			config: {
 				damping: 200,
 			},
+			delay: 20,
 		}) -
 		spring({
 			fps,
-			frame: frame - 50,
+			frame,
 			config: {
 				damping: 200,
 			},
+			delay: 50,
 		});
 
 	const edgeRoundness = interpolate(

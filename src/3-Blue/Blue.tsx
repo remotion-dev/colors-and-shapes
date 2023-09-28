@@ -35,10 +35,11 @@ export const Blue: React.FC = () => {
 
 	const spr2 = spring({
 		fps,
-		frame: frame - 40,
+		frame,
 		config: {
 			damping: 100,
 		},
+		delay: 40,
 	});
 
 	return (

@@ -30,17 +30,19 @@ export const Grass: React.FC = () => {
 	const progress =
 		spring({
 			fps,
-			frame: frame - 30,
+			frame,
 			config: {
 				damping: 200,
 			},
+			delay: 30,
 		}) -
 		spring({
 			fps,
-			frame: frame - 150,
+			frame,
 			config: {
 				damping: 200,
 			},
+			delay: 150,
 		});
 
 	return (

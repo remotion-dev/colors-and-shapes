@@ -13,10 +13,11 @@ export const MysteriousTriangle: React.FC<{
 		.map((_, i) => {
 			return spring({
 				fps,
-				frame: frame - i * 30,
+				frame,
 				config: {
 					damping: 200,
 				},
+				delay: i * 30,
 			});
 		})
 		.reduce((acc, curr) => acc + curr / 3, 0);

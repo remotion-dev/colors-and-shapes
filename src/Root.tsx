@@ -6,7 +6,7 @@ import {Camera} from './1-Camera/Camera';
 import {Grass} from './6-Grass/Grass';
 import {Green} from './2-Green/Green';
 import {Branded} from './7-Branded/Branded';
-import {Yellow} from './5-Yellow/Yellow';
+import {Stormy} from './5-Stormy/Yellow';
 
 export const RemotionRoot: React.FC = () => {
 	return (
@@ -69,8 +69,8 @@ export const RemotionRoot: React.FC = () => {
 				height={1080}
 			/>
 			<Composition
-				id="5-Yellow"
-				component={Yellow}
+				id="5-Stormy"
+				component={Stormy}
 				durationInFrames={200}
 				fps={30}
 				width={1080}
