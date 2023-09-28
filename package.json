@@ -8,7 +8,9 @@
 		"upgrade": "remotion upgrade",
 		"test": "eslint src --ext ts,tsx,js,jsx && tsc"
 	},
-	"repository": {},
+	"repository": {
+		"url": "https://github.com/remotion-dev/colors-and-shapes"
+	},
 	"license": "UNLICENSED",
 	"devDependencies": {
 		"@remotion/eslint-config": "4.0.43",

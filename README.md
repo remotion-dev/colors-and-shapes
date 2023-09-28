@@ -1,15 +1,6 @@
-# Remotion video
+<img src="starsandshapes.png"/>
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.gif">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
-
-Welcome to your Remotion project!
+**Colors and shapes**
 
 ## Commands
 
@@ -25,10 +16,10 @@ npm i
 npm start
 ```
 
-**Render video**
+**Render animations**
 
 ```console
-npm run build
+npx remotion render
 ```
 
 **Upgrade Remotion**
@@ -52,3 +43,7 @@ Found an issue with Remotion? [File an issue here](https://github.com/remotion-d
 ## License
 
 Notice that for some entities a company license is needed. Read [the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+
+You may only use these graphics if you licensed them on [remotion.pro](https://www.remotion.pro).
+
+It is forbidden to redistribute the source code of this project.
