@@ -7,7 +7,7 @@ import {
 	useVideoConfig,
 } from 'remotion';
 
-export const OrangeBlack = () => {
+export const Branded = () => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 

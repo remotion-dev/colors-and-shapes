@@ -22,7 +22,7 @@ const colors = [
 	'#b88a27',
 ] as const;
 
-export const Feathers: React.FC = () => {
+export const Grass: React.FC = () => {
 	const frame = useCurrentFrame();
 	const wave = Math.sin(frame / 20);
 	const {fps} = useVideoConfig();

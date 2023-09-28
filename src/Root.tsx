@@ -3,10 +3,10 @@ import {Arcs} from './4-Arcs/Arcs';
 import {Blue} from './3-Blue/Blue';
 import {BothShapes} from './1-Camera/BothShapes';
 import {Camera} from './1-Camera/Camera';
-import {Feathers} from './Feathers';
+import {Grass} from './6-Grass/Grass';
 import {Green} from './2-Green/Green';
-import {OrangeBlack} from './OrangeBlack';
-import {Yellow} from './Yellow';
+import {Branded} from './7-Branded/Branded';
+import {Yellow} from './5-Yellow/Yellow';
 
 export const RemotionRoot: React.FC = () => {
 	return (
@@ -77,16 +77,16 @@ export const RemotionRoot: React.FC = () => {
 				height={1080}
 			/>
 			<Composition
-				id="6-Feathers"
-				component={Feathers}
+				id="6-Grass"
+				component={Grass}
 				durationInFrames={6 * 30}
 				fps={30}
 				width={1080}
 				height={1080}
 			/>
 			<Composition
-				id="7-TriangleCircleSquare"
-				component={OrangeBlack}
+				id="7-Branded"
+				component={Branded}
 				durationInFrames={100}
 				fps={30}
 				width={1080}
