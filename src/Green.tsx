@@ -49,14 +49,14 @@ export const Green: React.FC = () => {
 
 	const spr3 = spring({
 		fps,
-		frame: frame - 90,
+		frame: frame - 100,
 		config: {
 			damping: 200,
 		},
 	});
 
 	const weights: number[] = new Array(rows).fill(0).map((_, i) => {
-		return i + (spr0 - spr3) * 0.3;
+		return i + (spr0 - spr3) * 0.3 + 1;
 	});
 
 	const totalWeight = weights.reduce((a, b) => a + b, 0);

@@ -11,22 +11,6 @@ import {Yellow} from './Yellow';
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
-			<Composition
-				id="2-Green"
-				component={Green}
-				durationInFrames={200}
-				fps={30}
-				width={1080}
-				height={1080}
-			/>
-			<Composition
-				id="3-Blue"
-				component={Blue}
-				durationInFrames={400}
-				fps={30}
-				width={1080}
-				height={1080}
-			/>
 			<Folder name="1-Camera">
 				<Composition
 					id="Camera"
@@ -59,6 +43,23 @@ export const RemotionRoot: React.FC = () => {
 					}}
 				/>
 			</Folder>
+			<Composition
+				id="2-Green"
+				component={Green}
+				durationInFrames={150}
+				fps={30}
+				width={1080}
+				height={1080}
+			/>
+			<Composition
+				id="3-Blue"
+				component={Blue}
+				durationInFrames={400}
+				fps={30}
+				width={1080}
+				height={1080}
+			/>
+
 			<Composition
 				id="4-Arcs"
 				component={Arcs}
