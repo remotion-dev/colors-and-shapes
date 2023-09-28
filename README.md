@@ -2,6 +2,8 @@
 
 **Colors and shapes**
 
+Colorful and animated art working with colors and shapes. These examples showcase shapes created using the [`@remotion/shapes`](https://remotion.dev/shapes) package and contain many great components for putting your brand in motion.
+
 ## Commands
 
 **Install Dependencies**
@@ -35,6 +37,8 @@ Get started with Remotion by reading the [fundamentals page](https://www.remotio
 ## Help
 
 We provide help [on our Discord server](https://discord.gg/6VzzNDwUwV).
+
+For issues regarding your purchase, email hi@remotion.dev.
 
 ## Issues
 
