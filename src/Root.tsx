@@ -1,5 +1,5 @@
 import {Composition, Folder} from 'remotion';
-import {Arcs} from './Arcs';
+import {Arcs} from './4-Arcs/Arcs';
 import {Blue} from './3-Blue/Blue';
 import {BothShapes} from './1-Camera/BothShapes';
 import {Camera} from './1-Camera/Camera';
