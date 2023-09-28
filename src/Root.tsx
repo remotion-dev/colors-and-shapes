@@ -1,10 +1,10 @@
 import {Composition, Folder} from 'remotion';
 import {Arcs} from './Arcs';
-import {Blue} from './Blue';
-import {BothShapes} from './BothShapes';
-import {Camera} from './Camera';
+import {Blue} from './3-Blue/Blue';
+import {BothShapes} from './1-Camera/BothShapes';
+import {Camera} from './1-Camera/Camera';
 import {Feathers} from './Feathers';
-import {Green} from './Green';
+import {Green} from './2-Green/Green';
 import {OrangeBlack} from './OrangeBlack';
 import {Yellow} from './Yellow';
 

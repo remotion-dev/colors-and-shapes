@@ -1,4 +1,3 @@
-import {noise2D} from '@remotion/noise';
 import {Pie} from '@remotion/shapes';
 import {random, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 

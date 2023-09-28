@@ -61,7 +61,7 @@ export const RenderSvg = ({
 							const prevX = prevInstruction.x;
 							const prevY = prevInstruction.y;
 							return (
-								<>
+								<React.Fragment key={index}>
 									<path
 										d={`M ${prevX} ${prevY} ${i.cp1x} ${i.cp1y}`}
 										strokeWidth={2}
@@ -88,7 +88,7 @@ export const RenderSvg = ({
 										fill="#fff"
 										stroke="#666"
 									/>
-								</>
+								</React.Fragment>
 							);
 						}
 

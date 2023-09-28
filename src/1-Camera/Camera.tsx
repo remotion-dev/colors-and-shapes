@@ -1,10 +1,10 @@
+import React from 'react';
 import {interpolate} from 'remotion';
 import {useCurrentFrame} from 'remotion';
 import {useVideoConfig} from 'remotion';
 import {Circle} from '@remotion/shapes';
-import React from 'react';
 import {AbsoluteFill, spring} from 'remotion';
-import {Rect} from './inline-debug/rect';
+import {Rect} from './scaffold-lines/rect';
 
 export const Camera: React.FC<{
 	trace: boolean;
