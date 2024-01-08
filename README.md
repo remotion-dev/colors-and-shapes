@@ -1,4 +1,4 @@
-<img src="https://github.com/remotion-dev/colors-and-shapes/assets/1629785/52c3e679-afe9-42c5-b296-d89ac37cf96c"/>
+<img src="https://github.com/remotion-dev/remotion/assets/1629785/7ed9d9bb-9d33-4980-abc5-2964959ae2ea"/>
 
 **Colors and shapes**
 
