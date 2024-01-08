@@ -1,4 +1,4 @@
-<img src="starsandshapes.png"/>
+<img src="https://github.com/remotion-dev/colors-and-shapes/assets/1629785/52c3e679-afe9-42c5-b296-d89ac37cf96c"/>
 
 **Colors and shapes**
 
