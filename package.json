@@ -11,7 +11,7 @@
 	"repository": {
 		"url": "https://github.com/remotion-dev/colors-and-shapes"
 	},
-	"license": "UNLICENSED",
+	"license": "MIT",
 	"devDependencies": {
 		"@remotion/eslint-config": "4.0.43",
 		"@types/react": "^18.0.26",

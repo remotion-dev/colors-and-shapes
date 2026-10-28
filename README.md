@@ -38,16 +38,12 @@ Get started with Remotion by reading the [fundamentals page](https://www.remotio
 
 We provide help [on our Discord server](https://discord.gg/6VzzNDwUwV).
 
-For issues regarding your purchase, email hi@remotion.dev.
-
 ## Issues
 
 Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
 
 ## License
 
-Notice that for some entities a company license is needed. Read [the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+This project is open source under the [MIT License](LICENSE). No purchase is required.
 
-You may only use these graphics if you licensed them on [remotion.pro](https://www.remotion.pro).
-
-It is forbidden to redistribute the source code of this project.
+The Remotion dependencies are licensed separately. See the [Remotion license](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md) for their terms.
